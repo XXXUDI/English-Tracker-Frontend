@@ -1,6 +1,6 @@
-import { LS_ACCESS_TOKEN_KEY } from "../../../shared/constants/authConstants.ts";
-import {getFromLS} from "../../../shared/helpers/manageLocalStorage/manageLocalStorage.ts";
-import { ROUTES } from "../../../shared/config/router/routes.ts";
+import { LS_ACCESS_TOKEN_KEY } from "../../../../shared/constants/authConstants.ts";
+import {getFromLS} from "../../../../shared/helpers/manageLocalStorage/manageLocalStorage.ts";
+import { ROUTES } from "../../../../shared/config/router/routes.ts";
 
 
 import {Navigate, useLocation} from "react-router";
