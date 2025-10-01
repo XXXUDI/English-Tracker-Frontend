@@ -5,6 +5,7 @@ import {createBrowserRouter} from "react-router";
 import {ROUTES} from "../../../../shared/config/router/routes.ts";
 import {UnAuthRoute} from "../ui/UnAuthRoute.tsx";
 import {AuthLayout} from "../../../layouts/AuthLayout/ui";
+import LoginPage from "../../../../pages/auth/LoginPage/ui/LoginPage.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -18,7 +19,7 @@ export const router = createBrowserRouter([
             {
                 path: ROUTES.auth.login.route,
                 // element: <LoginPage/>
-                element: <h1>LOGIN PAGE</h1>
+                element: <LoginPage/>
             },
             {
                 path: ROUTES.auth.register.route,
