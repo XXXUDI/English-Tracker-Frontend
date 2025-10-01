@@ -3,6 +3,10 @@ import { Eye, EyeOff, BookOpen } from 'lucide-react';
 import {Button} from "../../../../shared/ui/Button/Button.tsx";
 import {Tabs, TabsContent, TabsTrigger, TabsList} from "../../../../shared/ui/Tabs/Tabs.tsx";
 import {useState} from "react";
+import {Input} from "../../../../shared/ui/Input/Input.tsx";
+import {Label} from "../../../../shared/ui/Label/Label.tsx";
+import styles from "./LoginPage.module.css";
+import { cn } from "../../../../shared/helpers/cn";
 
 const LoginPage = () => {
 
@@ -15,55 +19,55 @@ const LoginPage = () => {
     const [registerForm, setRegisterForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
 
     return (
-        <div className="min-h-screen bg-background flex items-center justify-center p-4">
-            <div className="w-full max-w-md space-y-6">
+        <div className={styles.root}>
+            <div className={styles.container}>
                 {/* Logo and Title */}
-                <div className="text-center space-y-2">
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                        <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                            <BookOpen className="w-6 h-6 text-primary-foreground" />
+                <div className={styles.logoTitle}>
+                    <div className={styles.logoRow}>
+                        <div className={styles.logoIcon}>
+                            <BookOpen className={styles.logoSvg} />
                         </div>
-                        <h1 className="text-3xl font-bold text-foreground">EnTracker</h1>
+                        <h1 className={styles.title}>EnTracker</h1>
                     </div>
-                    <p className="text-muted-foreground">
+                    <p className={styles.subtitle}>
                         Track your English learning progress
                     </p>
                 </div>
 
                 {/* Demo Access */}
-                <Card className="bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/20 dark:to-indigo-950/20 border-blue-200 dark:border-blue-800">
-                    <CardContent className="pt-6">
-                        <div className="text-center space-y-3">
-                            <p className="text-sm text-blue-700 dark:text-blue-300">
-                                Want to try EnTracker without signing up?
-                            </p>
-                            <Button
-                                variant="outline"
-                                // onClick={handleDemoLogin}
-                                className="w-full border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-700 dark:text-blue-300 dark:hover:bg-blue-950"
-                            >
-                                Continue as Demo User
-                            </Button>
-                        </div>
-                    </CardContent>
-                </Card>
+                {/*<Card className={styles.demoCard}>*/}
+                {/*    <CardContent className={styles.demoCardContent}>*/}
+                {/*        <div className={cn(styles.textCenter, styles.spaceY4)}>*/}
+                {/*            <p className={styles.demoText}>*/}
+                {/*                Want to try EnTracker without signing up?*/}
+                {/*            </p>*/}
+                {/*            <Button*/}
+                {/*                variant="outline"*/}
+                {/*                // onClick={handleDemoLogin}*/}
+                {/*                className={cn(styles.wFull, styles.borderBlue)}*/}
+                {/*            >*/}
+                {/*                Continue as Demo User*/}
+                {/*            </Button>*/}
+                {/*        </div>*/}
+                {/*    </CardContent>*/}
+                {/*</Card>*/}
 
                 {/* Auth Forms */}
                 <Card>
                     <CardHeader>
-                        <CardTitle className="text-center">Welcome to EnTracker</CardTitle>
+                        <CardTitle className={styles.cardTitle}>Welcome to EnTracker</CardTitle>
                     </CardHeader>
                     <CardContent>
-                        <Tabs defaultValue="login" className="w-full">
-                            <TabsList className="grid w-full grid-cols-2">
+                        <Tabs defaultValue="login" className={styles.tabs}>
+                            <TabsList className={styles.tabsList}>
                                 <TabsTrigger value="login">Sign In</TabsTrigger>
                                 <TabsTrigger value="register">Sign Up</TabsTrigger>
                             </TabsList>
 
                             {/* Login Form */}
-                            <TabsContent value="login" className="space-y-4">
-                                <form onSubmit={handleLogin} className="space-y-4">
-                                    <div className="space-y-2">
+                            <TabsContent value="login" className={styles.spaceY4}>
+                                <form onSubmit={handleLogin} className={styles.spaceY4}>
+                                    <div className={styles.spaceY2}>
                                         <Label htmlFor="login-email">Email</Label>
                                         <Input
                                             id="login-email"
@@ -75,9 +79,9 @@ const LoginPage = () => {
                                         />
                                     </div>
 
-                                    <div className="space-y-2">
+                                    <div className={styles.spaceY2}>
                                         <Label htmlFor="login-password">Password</Label>
-                                        <div className="relative">
+                                        <div className={styles.relative}>
                                             <Input
                                                 id="login-password"
                                                 type={showPassword ? "text" : "password"}
@@ -90,34 +94,34 @@ const LoginPage = () => {
                                                 type="button"
                                                 variant="ghost"
                                                 size="icon"
-                                                className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8"
+                                                className={cn(styles.absolute, styles.right2, styles.topHalf, styles.h8, styles.w8)}
                                                 onClick={() => setShowPassword(!showPassword)}
                                             >
                                                 {showPassword ? (
-                                                    <EyeOff className="h-4 w-4" />
+                                                    <EyeOff className={styles.eyeIcon} />
                                                 ) : (
-                                                    <Eye className="h-4 w-4" />
+                                                    <Eye className={styles.eyeIcon} />
                                                 )}
                                             </Button>
                                         </div>
                                     </div>
 
-                                    <Button type="submit" className="w-full" disabled={isLoading}>
+                                    <Button type="submit" className={styles.wFull} disabled={isLoading}>
                                         {isLoading ? 'Signing in...' : 'Sign In'}
                                     </Button>
                                 </form>
 
-                                <div className="text-center">
-                                    <Button variant="link" className="text-sm text-muted-foreground">
+                                <div className={styles.textCenter}>
+                                    <Button variant="link" className={cn(styles.textSm, styles.subtitle)}>
                                         Forgot your password?
                                     </Button>
                                 </div>
                             </TabsContent>
 
                             {/* Register Form */}
-                            <TabsContent value="register" className="space-y-4">
-                                <form onSubmit={handleRegister} className="space-y-4">
-                                    <div className="space-y-2">
+                            <TabsContent value="register" className={styles.spaceY4}>
+                                <form onSubmit={handleRegister} className={styles.spaceY4}>
+                                    <div className={styles.spaceY2}>
                                         <Label htmlFor="register-name">Full Name</Label>
                                         <Input
                                             id="register-name"
@@ -129,7 +133,7 @@ const LoginPage = () => {
                                         />
                                     </div>
 
-                                    <div className="space-y-2">
+                                    <div className={styles.spaceY2}>
                                         <Label htmlFor="register-email">Email</Label>
                                         <Input
                                             id="register-email"
@@ -141,9 +145,9 @@ const LoginPage = () => {
                                         />
                                     </div>
 
-                                    <div className="space-y-2">
+                                    <div className={styles.spaceY2}>
                                         <Label htmlFor="register-password">Password</Label>
-                                        <div className="relative">
+                                        <div className={styles.relative}>
                                             <Input
                                                 id="register-password"
                                                 type={showPassword ? "text" : "password"}
@@ -156,19 +160,19 @@ const LoginPage = () => {
                                                 type="button"
                                                 variant="ghost"
                                                 size="icon"
-                                                className="absolute right-2 top-1/2 transform -translate-y-1/2 h-8 w-8"
+                                                className={cn(styles.absolute, styles.right2, styles.topHalf, styles.h8, styles.w8)}
                                                 onClick={() => setShowPassword(!showPassword)}
                                             >
                                                 {showPassword ? (
-                                                    <EyeOff className="h-4 w-4" />
+                                                    <EyeOff className={styles.eyeIcon} />
                                                 ) : (
-                                                    <Eye className="h-4 w-4" />
+                                                    <Eye className={styles.eyeIcon} />
                                                 )}
                                             </Button>
                                         </div>
                                     </div>
 
-                                    <div className="space-y-2">
+                                    <div className={styles.spaceY2}>
                                         <Label htmlFor="register-confirm-password">Confirm Password</Label>
                                         <Input
                                             id="register-confirm-password"
@@ -180,18 +184,18 @@ const LoginPage = () => {
                                         />
                                     </div>
 
-                                    <Button type="submit" className="w-full" disabled={isLoading}>
+                                    <Button type="submit" className={styles.wFull} disabled={isLoading}>
                                         {isLoading ? 'Creating account...' : 'Create Account'}
                                     </Button>
                                 </form>
 
-                                <div className="text-xs text-muted-foreground text-center">
+                                <div className={cn(styles.textXs, styles.subtitle, styles.textCenter)}>
                                     By creating an account, you agree to our{' '}
-                                    <Button variant="link" className="text-xs p-0 h-auto">
+                                    <Button variant="link" className={cn(styles.textXs, styles.p0, styles.hAuto)}>
                                         Terms of Service
                                     </Button>{' '}
                                     and{' '}
-                                    <Button variant="link" className="text-xs p-0 h-auto">
+                                    <Button variant="link" className={cn(styles.textXs, styles.p0, styles.hAuto)}>
                                         Privacy Policy
                                     </Button>
                                 </div>
@@ -199,39 +203,24 @@ const LoginPage = () => {
                         </Tabs>
 
                         {/* Separator */}
-                        <div className="relative my-6">
-                            {/*<Separator />*/}
-                            <div className="absolute inset-0 flex items-center justify-center">
-                <span className="bg-background px-2 text-sm text-muted-foreground">
-                  or continue with
-                </span>
-                            </div>
+                        <div className={styles.separator}>
+                            <div className={styles.separatorLine}></div>
+                            <span className={styles.separatorText}>or continue with</span>
+                            <div className={styles.separatorLine}></div>
                         </div>
 
-                         Google Sign In
+                        {/* Google Sign In */}
                         <Button
                             variant="outline"
-                            className="w-full"
+                            className={styles.wFull}
                             onClick={handleGoogleLogin}
                             disabled={isLoading}
                         >
-                            <svg className="w-5 h-5 mr-2" viewBox="0 0 24 24">
-                                <path
-                                    fill="currentColor"
-                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
-                                />
-                                <path
-                                    fill="currentColor"
-                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
-                                />
-                                <path
-                                    fill="currentColor"
-                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
-                                />
-                                <path
-                                    fill="currentColor"
-                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
-                                />
+                            <svg className={styles.mr2} viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                                <path fill="currentColor" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                                <path fill="currentColor" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                                <path fill="currentColor" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
                             </svg>
                             {isLoading ? 'Connecting...' : 'Continue with Google'}
                         </Button>
@@ -239,7 +228,7 @@ const LoginPage = () => {
                 </Card>
 
                 {/* Footer */}
-                <div className="text-center text-xs text-muted-foreground">
+                <div className={styles.footer}>
                     <p>© 2024 EnTracker. All rights reserved.</p>
                 </div>
             </div>
