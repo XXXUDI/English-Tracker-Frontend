@@ -1,0 +1,104 @@
+.wFull {
+    width: 100%;
+}
+.borderBlue {
+    border: 1px solid #93c5fd;
+    color: #2563eb;
+    background: #f0f9ff;
+}
+.borderBlueDark {
+    border: 1px solid #1e40af;
+    color: #93c5fd;
+    background: #1e293b;
+}
+.textCenter {
+    text-align: center;
+}
+.cardTitle {
+    text-align: center;
+}
+.tabs {
+    width: 100%;
+}
+.tabsList {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
+}
+.spaceY4 {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.spaceY2 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.relative {
+    position: relative;
+}
+.absolute {
+    position: absolute;
+}
+.right2 {
+    right: 0.5rem;
+}
+.topHalf {
+    top: 50%;
+    transform: translateY(-50%);
+}
+.h8 {
+    height: 2rem;
+}
+.w8 {
+    width: 2rem;
+}
+.textSm {
+    font-size: 0.875rem;
+}
+.textXs {
+    font-size: 0.75rem;
+}
+.p0 {
+    padding: 0;
+}
+.hAuto {
+    height: auto;
+}
+.my6 {
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.separator {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin: 1.5rem 0;
+}
+.separatorLine {
+    flex: 1;
+    height: 1px;
+    background: #e5e7eb;
+    margin: 0 0.5rem;
+}
+.separatorText {
+    background: var(--background, #f8fafc);
+    padding: 0 0.5rem;
+    font-size: 0.875rem;
+    color: var(--muted-foreground, #6b7280);
+    z-index: 1;
+}
+
+.mr2 {
+    margin-right: 0.5rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    display: inline-block;
+}
+.eyeIcon {
+    width: 1.25rem;
+    height: 1.25rem;
+}
