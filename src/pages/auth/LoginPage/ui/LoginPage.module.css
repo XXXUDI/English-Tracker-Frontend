@@ -47,11 +47,8 @@
 .subtitle {
   color: var(--muted-foreground, #6b7280);
 }
-
-
 .footer {
   text-align: center;
   font-size: 0.75rem;
   color: var(--muted-foreground, #6b7280);
 }
-
