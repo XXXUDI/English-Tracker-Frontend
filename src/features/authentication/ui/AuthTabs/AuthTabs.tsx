@@ -18,8 +18,14 @@ export const AuthTabs = ({isLoading} : {isLoading: boolean}) => {
         navigate(ROUTES.auth["forgot-password"].page);
     }
 
-    const handleLogin = () => { return null };
-    const handleRegister = () => { return null };
+    const handleLogin = () => {
+        console.log("Login form submitted:", loginForm);
+        return null
+    };
+    const handleRegister = () => {
+        console.log("Register form submitted:", registerForm);
+        return null
+    };
 
     return (
         <Tabs defaultValue="login" className={styles.tabs}>

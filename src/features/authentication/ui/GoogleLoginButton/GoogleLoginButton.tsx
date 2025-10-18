@@ -4,6 +4,7 @@ import styles from "./GoogleLoginButton.module.css";
 
 export const GoogleLoginButton = ({isLoading}: { isLoading: boolean }) => {
     const handleGoogleLogin = () => {
+        console.log("GoogleLogin button clicked");
         return null
     };
 
