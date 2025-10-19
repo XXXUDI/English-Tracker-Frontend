@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react';;
+import { BookOpen } from 'lucide-react';
 import styles from "./LoginPage.module.css";
 import AuthForm from "../../../../features/authentication/ui";
 

@@ -2,7 +2,10 @@ import {Button} from "../../../../shared/ui/Button/Button.tsx";
 import styles from "./GoogleLoginButton.module.css";
 
 
-export const GoogleLoginButton = ({isLoading}: { isLoading: boolean }) => {
+export const GoogleLoginButton = () => {
+
+    const isLoading = false;
+
     const handleGoogleLogin = () => {
         console.log("GoogleLogin button clicked");
         return null

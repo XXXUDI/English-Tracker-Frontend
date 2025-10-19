@@ -6,8 +6,6 @@ import {GoogleLoginButton} from "../GoogleLoginButton/GoogleLoginButton.tsx";
 
 export const AuthForm = () => {
 
-    const isLoading = false;
-
     return (
         <Card>
             <CardHeader>
@@ -15,7 +13,7 @@ export const AuthForm = () => {
             </CardHeader>
             <CardContent>
 
-                <AuthTabs isLoading={isLoading}/>
+                <AuthTabs/>
 
                 {/* Separator */}
                 <div className={styles.separator}>
@@ -25,7 +23,7 @@ export const AuthForm = () => {
                 </div>
 
                 {/* Google Sign In */}
-                <GoogleLoginButton isLoading={isLoading} />
+                <GoogleLoginButton />
             </CardContent>
         </Card>
     );

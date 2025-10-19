@@ -57,4 +57,5 @@ export type RegisterResponse = AuthResponse;
 export type RefreshResponse = AuthResponse;
 export type ProfileResponse = Profile;
 
+// TODO: Add google request and response types when implementing Google OAuth
 

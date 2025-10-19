@@ -6,22 +6,17 @@ import {Button} from "../../../../shared/ui/Button/Button.tsx";
 import {cn} from "../../../../shared/helpers/cn";
 import {Eye, EyeOff} from "lucide-react";
 import {useState} from "react";
-import {ROUTES} from "../../../../shared/config/router/routes.ts";
-import {useNavigate} from "react-router";
+import LoginForm from "../LoginForm/LoginForm.tsx";
 
-export const AuthTabs = ({isLoading} : {isLoading: boolean}) => {
-    const navigate = useNavigate();
+export const AuthTabs = () => {
     const [showPassword, setShowPassword] = useState(false);
-    const [loginForm, setLoginForm] = useState({ email: '', password: '' });
-    const [registerForm, setRegisterForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
-    const handleForgotPassword = () => {
-        navigate(ROUTES.auth["forgot-password"].page);
-    }
 
-    const handleLogin = () => {
-        console.log("Login form submitted:", loginForm);
-        return null
-    };
+    const [registerForm, setRegisterForm] = useState({ name: '', email: '', password: '', confirmPassword: '' });
+
+
+    const isLoading = false;
+
+
     const handleRegister = () => {
         console.log("Register form submitted:", registerForm);
         return null
@@ -36,56 +31,7 @@ export const AuthTabs = ({isLoading} : {isLoading: boolean}) => {
 
             {/* Login Form */}
             <TabsContent value="login" className={styles.spaceY4}>
-                <form onSubmit={handleLogin} className={styles.spaceY4}>
-                    <div className={styles.spaceY2}>
-                        <Label htmlFor="login-email">Email</Label>
-                        <Input
-                            id="login-email"
-                            type="email"
-                            placeholder="Enter your email"
-                            value={loginForm.email}
-                            onChange={(e) => setLoginForm({...loginForm, email: e.target.value})}
-                            required
-                        />
-                    </div>
-
-                    <div className={styles.spaceY2}>
-                        <Label htmlFor="login-password">Password</Label>
-                        <div className={styles.relative}>
-                            <Input
-                                id="login-password"
-                                type={showPassword ? "text" : "password"}
-                                placeholder="Enter your password"
-                                value={loginForm.password}
-                                onChange={(e) => setLoginForm({...loginForm, password: e.target.value})}
-                                required
-                            />
-                            <Button
-                                type="button"
-                                variant="ghost"
-                                size="icon"
-                                className={cn(styles.absolute, styles.right2, styles.topHalf, styles.h8, styles.w8)}
-                                onClick={() => setShowPassword(!showPassword)}
-                            >
-                                {showPassword ? (
-                                    <EyeOff className={styles.eyeIcon} />
-                                ) : (
-                                    <Eye className={styles.eyeIcon} />
-                                )}
-                            </Button>
-                        </div>
-                    </div>
-
-                    <Button type="submit" className={styles.wFull} disabled={isLoading}>
-                        {isLoading ? 'Signing in...' : 'Sign In'}
-                    </Button>
-                </form>
-
-                <div className={styles.textCenter}>
-                    <Button variant="link" onClick={handleForgotPassword} className={cn(styles.textSm, styles.subtitle)}>
-                        Forgot your password?
-                    </Button>
-                </div>
+                <LoginForm />
             </TabsContent>
 
             {/* Register Form */}

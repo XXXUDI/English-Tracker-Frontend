@@ -3,6 +3,7 @@ import React, {useState, createContext, useContext} from "react";
 import {cn} from "../../helpers/cn";
 
 // Context для хранения состояния активного таба
+// TODO: replace by Redux
 const TabsContext = createContext({
     value: "",
     setValue: (v: string) => {
