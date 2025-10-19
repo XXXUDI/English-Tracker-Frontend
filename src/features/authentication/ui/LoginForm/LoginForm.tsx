@@ -15,8 +15,6 @@ const LoginForm = () => {
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState({email: '', password: ''});
     const [showPassword, setShowPassword] = useState(false);
-    // const isLoading = false;
-
     const [loginMutation, {isLoading}] = useLoginMutation();
 
     const onLogin = async (data: LoginFormValues) => {

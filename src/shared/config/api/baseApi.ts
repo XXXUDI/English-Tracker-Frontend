@@ -7,8 +7,7 @@ import {ApiTags} from "./apiTags.ts";
 import {apiAccessTokenIsBrokenEvent} from "./apiAccessTokenIsBrokenEvent.ts";
 
 const baseQuery = fetchBaseQuery({
-    // baseUrl: process.env.API_URL,
-    baseUrl: 'http://localhost:8000/api',
+    baseUrl: import.meta.env.GATEWAY_BASE_URL || 'http://localhost:8080/api', // Spring Boot API Gateway URL
     credentials: 'include',
     prepareHeaders: (headers) => {
         const accessToken = getFromLS(LS_ACCESS_TOKEN_KEY);
