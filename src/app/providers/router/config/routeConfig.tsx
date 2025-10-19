@@ -2,7 +2,10 @@
 
 
 import {createBrowserRouter} from "react-router";
-import {ROUTES} from "../../../shared/config/router/routes.ts";
+import {ROUTES} from "../../../../shared/config/router/routes";
+import {UnAuthRoute} from "../ui/UnAuthRoute";
+import {AuthLayout} from "../../../layouts/AuthLayout/ui";
+import LoginPage from "../../../../pages/auth/LoginPage/ui/LoginPage";
 
 export const router = createBrowserRouter([
     {
@@ -15,20 +18,24 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: ROUTES.auth.login.route,
+                // element: <LoginPage/>
                 element: <LoginPage/>
             },
             {
                 path: ROUTES.auth.register.route,
-                element: <RegisterPage/>
+                // element: <RegisterPage/>
+                element: <>REGISTER PAGE</>
             },
             {
                 path: ROUTES.auth['forgot-password'].route,
-                element: <ForgotPasswordPage/>
+                // element: <ForgotPasswordPage/>
+                element : <>FORGOT PASSWORD PAGE</>
             }
         ]
     },
     {
         path: ROUTES.auth["password-recovery"].page,
-        element: <PasswordRecoveryPage/>,
+        // element: <PasswordRecoveryPage/>,
+        element: <>PASSWORD RECOVERY PAGE</>
     }
 ]);

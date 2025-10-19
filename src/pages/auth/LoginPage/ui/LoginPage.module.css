@@ -1,0 +1,54 @@
+/* LoginPage.module.css */
+.root {
+  min-height: 100vh;
+  background: var(--background, #f8fafc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+.container {
+  width: 100%;
+  max-width: 28rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.logoTitle {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.logoRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.logoIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--primary, #2563eb);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.logoSvg {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--primary-foreground, #fff);
+}
+.title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: var(--foreground, #222);
+}
+.subtitle {
+  color: var(--muted-foreground, #6b7280);
+}
+.footer {
+  text-align: center;
+  font-size: 0.75rem;
+  color: var(--muted-foreground, #6b7280);
+}
