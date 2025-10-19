@@ -1,21 +1,21 @@
-import {useState} from 'react';
-import {Label} from "../../../../shared/ui/Label/Label.tsx";
-import {Input} from "../../../../shared/ui/Input/Input.tsx";
-import {Button} from "../../../../shared/ui/Button/Button.tsx";
+import { useState} from 'react';
+import {Label} from "../../../../shared/ui/Label/Label";
+import {Input} from "../../../../shared/ui/Input/Input";
+import {Button} from "../../../../shared/ui/Button/Button";
 import {cn} from "../../../../shared/helpers/cn";
 import {Eye, EyeOff} from "lucide-react";
-import {ROUTES} from "../../../../shared/config/router/routes.ts";
+import {ROUTES} from "../../../../shared/config/router/routes";
 import {useNavigate} from "react-router";
 import styles from "./LoginForm.module.css";
-import {useLoginMutation} from "../../../../entities/auth/api/authApi.ts";
-import type {LoginFormValues} from "../../../../entities/auth/model/types/auth.ts";
+import {useLoginMutation} from "../../../../entities/auth/api/authApi";
+import type {LoginFormValues} from "../../../../entities/auth/model/types/auth";
 
 const LoginForm = () => {
 
     const navigate = useNavigate();
     const [loginForm, setLoginForm] = useState({email: '', password: ''});
     const [showPassword, setShowPassword] = useState(false);
-    const [loginMutation, {isLoading}] = useLoginMutation();
+    const [loginMutation, {isLoading} ] = useLoginMutation();
 
     const onLogin = async (data: LoginFormValues) => {
         await loginMutation(data);
@@ -30,7 +30,6 @@ const LoginForm = () => {
         console.log("Login form submitted:", loginForm);
         callback(loginForm);
     }
-
 
     return (
         <>

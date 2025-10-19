@@ -1,3 +1,3 @@
-import {AuthForm} from "./AuthForm/AuthForm.tsx";
+import {AuthForm} from "./AuthForm/AuthForm";
 
 export default AuthForm;

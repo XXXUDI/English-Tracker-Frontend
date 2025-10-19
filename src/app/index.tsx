@@ -4,6 +4,9 @@ import {RouterProvider} from "react-router";
 import {router} from "./providers/router";
 
 
+import "../styles/normalize.css";
+import "../styles/global.css"
+
 const root = document.getElementById('root') as HTMLElement;
 
 const container = createRoot(root);

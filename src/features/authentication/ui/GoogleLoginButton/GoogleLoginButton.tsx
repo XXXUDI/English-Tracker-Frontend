@@ -1,4 +1,4 @@
-import {Button} from "../../../../shared/ui/Button/Button.tsx";
+import {Button} from "../../../../shared/ui/Button/Button";
 import styles from "./GoogleLoginButton.module.css";
 
 

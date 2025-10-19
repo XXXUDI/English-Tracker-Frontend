@@ -1,6 +1,6 @@
 import type {PropsWithChildren} from "react";
-import {setupReduxStore} from "../config/config.ts";
-import type {State} from "../../../../../shared/config/store/state.ts";
+import {setupReduxStore} from "../config/config";
+import type {State} from "../../../../../shared/config/store/state";
 import {Provider} from "react-redux";
 import type {DeepPartial} from "react-hook-form";
 

@@ -1,17 +1,17 @@
-import {baseApi} from "../../../shared/config/api/baseApi.ts";
+import {baseApi} from "../../../shared/config/api/baseApi";
 
-import {authApiUrls} from "../model/constants/authConstatnt.ts";
-import {LS_ACCESS_TOKEN_KEY} from "../../../shared/constants/authConstants.ts";
-import {removeFromLS, setToLS} from "../../../shared/helpers/manageLocalStorage/manageLocalStorage.ts";
-import {ROUTES} from "../../../shared/config/router/routes.ts";
-import type {ExtraArgument} from "../../../shared/config/store/types.ts";
+import {authApiUrls} from "../model/constants/authConstatnt";
+import {LS_ACCESS_TOKEN_KEY} from "../../../shared/constants/authConstants";
+import {removeFromLS, setToLS} from "../../../shared/helpers/manageLocalStorage/manageLocalStorage";
+import {ROUTES} from "../../../shared/config/router/routes";
+import type {ExtraArgument} from "../../../shared/config/store/types";
 import type {
     LoginRequest,
     LoginResponse,
     RefreshResponse,
     RegisterRequest,
     RegisterResponse
-} from "../model/types/auth.ts";
+} from "../model/types/auth";
 
 
 export const authApi = baseApi.injectEndpoints({
@@ -24,7 +24,7 @@ export const authApi = baseApi.injectEndpoints({
             }),
             async onQueryStarted(_, { queryFulfilled, extra, dispatch}) {
                 try {
-                    dispatch(baseApi.util.resetApiState());
+                    // dispatch(baseApi.util.resetApiState());
                     const result = await queryFulfilled;
                     setToLS(LS_ACCESS_TOKEN_KEY, result.data.accessToken);
                     const typedExtra = extra as ExtraArgument;

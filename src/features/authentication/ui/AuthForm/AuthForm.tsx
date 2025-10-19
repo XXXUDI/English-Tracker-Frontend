@@ -1,18 +1,20 @@
-import {Card, CardContent, CardHeader, CardTitle} from "../../../../shared/ui/Card/Card.tsx";
+import {Card, CardContent, CardHeader, CardTitle} from "../../../../shared/ui/Card/Card";
 import styles from "./AuthForm.module.css";
-import {AuthTabs} from "../AuthTabs/AuthTabs.tsx";
-import {GoogleLoginButton} from "../GoogleLoginButton/GoogleLoginButton.tsx";
+import {AuthTabs} from "../AuthTabs/AuthTabs";
+import {GoogleLoginButton} from "../GoogleLoginButton/GoogleLoginButton";
 
 
 export const AuthForm = () => {
 
     return (
         <Card>
+            {/* Card Header with Title */}
             <CardHeader>
                 <CardTitle className={styles.cardTitle}>Welcome to EnTracker</CardTitle>
             </CardHeader>
             <CardContent>
 
+                {/* Tabs for Login and Register */}
                 <AuthTabs/>
 
                 {/* Separator */}

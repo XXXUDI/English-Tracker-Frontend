@@ -1,10 +1,10 @@
 import {fetchBaseQuery} from "@reduxjs/toolkit/query";
 import type {BaseQueryFn, FetchArgs, FetchBaseQueryError} from "@reduxjs/toolkit/query";
-import {getFromLS} from "../../helpers/manageLocalStorage/manageLocalStorage.ts";
-import {LS_ACCESS_TOKEN_KEY} from "../../constants/authConstants.ts";
+import {getFromLS} from "../../helpers/manageLocalStorage/manageLocalStorage";
+import {LS_ACCESS_TOKEN_KEY} from "../../constants/authConstants";
 import {createApi} from "@reduxjs/toolkit/query/react";
-import {ApiTags} from "./apiTags.ts";
-import {apiAccessTokenIsBrokenEvent} from "./apiAccessTokenIsBrokenEvent.ts";
+import {ApiTags} from "./apiTags";
+import {apiAccessTokenIsBrokenEvent} from "./apiAccessTokenIsBrokenEvent";
 
 const baseQuery = fetchBaseQuery({
     baseUrl: import.meta.env.GATEWAY_BASE_URL || 'http://localhost:8080/api', // Spring Boot API Gateway URL

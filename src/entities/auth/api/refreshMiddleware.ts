@@ -1,6 +1,6 @@
 import {createListenerMiddleware} from "@reduxjs/toolkit";
-import {apiAccessTokenIsBrokenEvent} from "../../../shared/config/api/apiAccessTokenIsBrokenEvent.ts";
-import {authApi} from "./authApi.ts";
+import {apiAccessTokenIsBrokenEvent} from "../../../shared/config/api/apiAccessTokenIsBrokenEvent";
+import {authApi} from "./authApi";
 
 export const refreshMiddleware = createListenerMiddleware();
 

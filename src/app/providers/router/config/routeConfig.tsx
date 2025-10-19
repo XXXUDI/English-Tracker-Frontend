@@ -2,10 +2,10 @@
 
 
 import {createBrowserRouter} from "react-router";
-import {ROUTES} from "../../../../shared/config/router/routes.ts";
-import {UnAuthRoute} from "../ui/UnAuthRoute.tsx";
+import {ROUTES} from "../../../../shared/config/router/routes";
+import {UnAuthRoute} from "../ui/UnAuthRoute";
 import {AuthLayout} from "../../../layouts/AuthLayout/ui";
-import LoginPage from "../../../../pages/auth/LoginPage/ui/LoginPage.tsx";
+import LoginPage from "../../../../pages/auth/LoginPage/ui/LoginPage";
 
 export const router = createBrowserRouter([
     {

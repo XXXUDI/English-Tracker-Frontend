@@ -1,12 +1,12 @@
 import styles from "./AuthTabs.module.css"
-import {Tabs, TabsContent, TabsList, TabsTrigger} from "../../../../shared/ui/Tabs/Tabs.tsx";
-import {Label} from "../../../../shared/ui/Label/Label.tsx";
-import {Input} from "../../../../shared/ui/Input/Input.tsx";
-import {Button} from "../../../../shared/ui/Button/Button.tsx";
+import {Tabs, TabsContent, TabsList, TabsTrigger} from "../../../../shared/ui/Tabs/Tabs";
+import {Label} from "../../../../shared/ui/Label/Label";
+import {Input} from "../../../../shared/ui/Input/Input";
+import {Button} from "../../../../shared/ui/Button/Button";
 import {cn} from "../../../../shared/helpers/cn";
 import {Eye, EyeOff} from "lucide-react";
 import {useState} from "react";
-import LoginForm from "../LoginForm/LoginForm.tsx";
+import LoginForm from "../LoginForm/LoginForm";
 
 export const AuthTabs = () => {
     const [showPassword, setShowPassword] = useState(false);
