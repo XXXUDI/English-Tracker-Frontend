@@ -1,21 +1,68 @@
 import {Button} from "../../../../shared/ui/Button/Button";
 import styles from "./GoogleLoginButton.module.css";
+import {useGoogleLoginMutation} from "../../../../entities/auth/api/authApi.ts";
+import {useGoogleLogin} from "@react-oauth/google";
 
 
 export const GoogleLoginButton = () => {
 
-    const isLoading = false;
+    const [googleLogin, {isLoading}] = useGoogleLoginMutation();
 
-    const handleGoogleLogin = () => {
-        console.log("GoogleLogin button clicked");
-        return null
+    const handleSuccess = (resp: unknown) => {
+        console.log('Got Google response:', resp);
+
+        const process = async (response: unknown) => {
+            try {
+                // Prefer `credential` (id_token / JWT) if present
+                if (response && typeof response === 'object' && 'credential' in response) {
+                    const respObj = response as { credential?: string };
+                    if (respObj.credential) {
+                        await googleLogin({ token: respObj.credential }).unwrap();
+                        return;
+                    }
+                }
+
+                // Fallback: if access_token present (implicit/token flow)
+                if (response && typeof response === 'object' && 'access_token' in response) {
+                    const respObj = response as { access_token?: string };
+                    if (respObj.access_token) {
+                        await googleLogin({ token: respObj.access_token }).unwrap();
+                        return;
+                    }
+                }
+
+                // Fallback: if code present (auth-code flow)
+                if (response && typeof response === 'object' && 'code' in response) {
+                    const respObj = response as { code?: string };
+                    if (respObj.code) {
+                        await googleLogin({ token: respObj.code }).unwrap();
+                        return;
+                    }
+                }
+
+                console.warn('Unrecognized Google response shape, nothing to send to backend:', response);
+            } catch (err) {
+                console.error('Failed to login with Google:', err);
+            }
+        };
+
+        void process(resp);
     };
+
+    const handleError = () => {
+        console.error('Google Login Failed');
+    };
+
+    const loginViaGoogle = useGoogleLogin({
+        onSuccess: handleSuccess,
+        onError: handleError,
+    });
 
     return (
         <Button
             variant="outline"
             className={styles.wFull}
-            onClick={handleGoogleLogin}
+            onClick={() => loginViaGoogle()}
             disabled={isLoading}
         >
             <svg className={styles.mr2} viewBox="0 0 24 24">
