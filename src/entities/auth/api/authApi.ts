@@ -1,5 +1,4 @@
 import {baseApi} from "../../../shared/config/api/baseApi";
-
 import {authApiUrls} from "../model/constants/authConstatnt";
 import {LS_ACCESS_TOKEN_KEY} from "../../../shared/constants/authConstants";
 import {removeFromLS, setToLS} from "../../../shared/helpers/manageLocalStorage/manageLocalStorage";
@@ -8,10 +7,13 @@ import type {ExtraArgument} from "../../../shared/config/store/types";
 import type {
     LoginRequest,
     LoginResponse,
+    ProfileResponse,
     RefreshResponse,
     RegisterRequest,
     RegisterResponse
 } from "../model/types/auth";
+import {profileActions} from "../../profile/slice/profileSlice.ts";
+import {ApiTags} from "../../../shared/config/api/apiTags.ts";
 
 
 export const authApi = baseApi.injectEndpoints({
@@ -29,7 +31,7 @@ export const authApi = baseApi.injectEndpoints({
                     setToLS(LS_ACCESS_TOKEN_KEY, result.data.accessToken);
                     const typedExtra = extra as ExtraArgument;
                     const searchParams = new URLSearchParams(window.location.search);
-                    const returnPage = searchParams.get('returnPage') || ROUTES.profile.page;
+                    const returnPage = searchParams.get('returnPage') || ROUTES.platform.profile.route;
                     typedExtra.navigate(returnPage);
                 } catch (error) {
                     if(error && typeof error === 'object' && 'error' in error) {
@@ -48,11 +50,11 @@ export const authApi = baseApi.injectEndpoints({
             }),
             async onQueryStarted(_, { queryFulfilled, extra, dispatch}) {
                 try {
-                    dispatch(baseApi.util.resetApiState());
+                    // dispatch(baseApi.util.resetApiState());
                     const result = await queryFulfilled;
                     setToLS(LS_ACCESS_TOKEN_KEY, result.data.accessToken);
                     const typedExtra = extra as ExtraArgument;
-                    typedExtra.navigate(ROUTES.profile.page);
+                    typedExtra.navigate(ROUTES.platform.profile.route);
                 } catch (error) {
                     if(error && typeof error === 'object' && 'error' in error) {
                         const errObj = error as {error: {data: {message: string}}};
@@ -74,6 +76,18 @@ export const authApi = baseApi.injectEndpoints({
                 }
             }
 
+        }),
+        profile: build.query<ProfileResponse, void>({
+            query: () => authApiUrls.profile,
+            providesTags: [ApiTags.PROFILE],
+            async onQueryStarted(_, {queryFulfilled, dispatch}) {
+                try {
+                    const result = await queryFulfilled;
+                    dispatch(profileActions.setFullProfile(result.data));
+                } catch(error) {
+                    console.error('Error was occurred while fetching profile: ', error);
+                }
+            }
         })
 
         // TODO: add google login, profile, logout, refresh endpoints
@@ -83,4 +97,5 @@ export const authApi = baseApi.injectEndpoints({
 export const {
     useLoginMutation,
     useRegisterMutation,
+    useProfileQuery,
 } = authApi;

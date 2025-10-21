@@ -1,0 +1,22 @@
+:root {
+  /* fallback border color in case project doesn't define --border */
+  --separator-border: var(--border, #e5e7eb);
+}
+
+.root {
+  background-color: var(--separator-border);
+  flex-shrink: 0; /* shrink-0 */
+}
+
+/* Horizontal: full width, 1px height */
+.horizontal {
+  height: 1px; /* h-px */
+  width: 100%; /* w-full */
+}
+
+/* Vertical: full height, 1px width */
+.vertical {
+  width: 1px; /* w-px */
+  height: 100%; /* h-full */
+}
+

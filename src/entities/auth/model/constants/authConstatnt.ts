@@ -4,4 +4,7 @@ export const authApiUrls = {
     refreshToken: '/auth/refresh-token',
     logout: '/auth/logout',
     googleLogin: '/auth/google',
+
+    // Profile endpoints
+    profile: '/profile'
 }

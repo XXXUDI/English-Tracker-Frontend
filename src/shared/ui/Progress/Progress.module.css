@@ -1,0 +1,30 @@
+:root {
+  /* fallback primary color */
+  --primary: #3b82f6; /* blue-500 */
+}
+
+.root {
+  background-color: color-mix(in srgb, var(--primary) 20%, transparent); /* bg-primary/20 */
+  position: relative; /* relative */
+  height: 0.5rem; /* h-2 */
+  width: 100%; /* w-full */
+  overflow: hidden;
+  border-radius: 9999px; /* rounded-full */
+}
+
+.indicator {
+  background-color: var(--primary); /* bg-primary */
+  height: 100%;
+  width: 100%;
+  transform: translateX(-100%);
+  transition: transform 250ms ease; /* transition-all */
+  will-change: transform;
+}
+
+/* utility helpers if any need to override */
+.centered {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

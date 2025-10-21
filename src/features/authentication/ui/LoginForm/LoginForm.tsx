@@ -36,7 +36,7 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit(onLogin)} className={styles.spaceY4}>
                 <div className={styles.spaceY2}>
                     <Label htmlFor="login-email">Email</Label>
-                    {/*TODO: implement form control with react-hook-form*/}
+                    {/*TODO: implement form control with react-hooks-form*/}
                     <Input
                         id="login-email"
                         type="email"

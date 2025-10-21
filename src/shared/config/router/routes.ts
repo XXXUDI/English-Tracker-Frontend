@@ -1,4 +1,7 @@
 export const ROUTES = {
+
+    appRoute: '/',
+    adminRoute: '/admin',
     auth: {
         route: 'auth',
         login: {
@@ -18,16 +21,15 @@ export const ROUTES = {
             page: '/auth/password-recovery'
         }
     },
-    profile: {
-        route: 'profile',
-        page: '/dashboard/profile',
-        edit: {
-            route: 'edit',
-            page: '/dashboard/profile/edit'
+    platform: {
+        route: 'platform',
+        dashboard: {
+            route: 'dashboard',
+            page: '/dashboard'
+        },
+        profile: {
+            route: 'profile',
+            page: '/profile'
         }
-    },
-    settings: {
-        route: 'settings',
-        page: '/dashboard/settings',
     }
 } as const;

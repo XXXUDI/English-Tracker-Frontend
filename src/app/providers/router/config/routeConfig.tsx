@@ -6,6 +6,9 @@ import {ROUTES} from "../../../../shared/config/router/routes";
 import {UnAuthRoute} from "../ui/UnAuthRoute";
 import {AuthLayout} from "../../../layouts/AuthLayout/ui";
 import LoginPage from "../../../../pages/auth/LoginPage/ui/LoginPage";
+import {AuthRoute} from "../ui/AuthRoute.tsx";
+import {MainLayout} from "../../../layouts/MainLayout/ui/MainLayout.tsx";
+import DashboardPage from "../../../../pages/dashboard/DashboardPage/ui/DashboardPage.tsx";
 
 export const router = createBrowserRouter([
     {
@@ -18,13 +21,11 @@ export const router = createBrowserRouter([
         children: [
             {
                 path: ROUTES.auth.login.route,
-                // element: <LoginPage/>
                 element: <LoginPage/>
             },
             {
                 path: ROUTES.auth.register.route,
-                // element: <RegisterPage/>
-                element: <>REGISTER PAGE</>
+                element: <LoginPage/>
             },
             {
                 path: ROUTES.auth['forgot-password'].route,
@@ -34,8 +35,22 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: ROUTES.auth["password-recovery"].page,
+        path: ROUTES.auth["password-recovery"].route,
         // element: <PasswordRecoveryPage/>,
         element: <>PASSWORD RECOVERY PAGE</>
+    },
+    {
+        path: ROUTES.platform.route,
+        element: (
+            <AuthRoute>
+                <MainLayout/>
+            </AuthRoute>
+        ),
+        children: [
+            {
+                path: ROUTES.platform.dashboard.route,
+                element: <DashboardPage/>
+            }
+        ]
     }
 ]);

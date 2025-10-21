@@ -10,7 +10,8 @@ interface UnAuthRouteProps {
 export const UnAuthRoute: React.FC<UnAuthRouteProps> = ({children}: UnAuthRouteProps) => {
 
     const isAuth = getFromLS(LS_ACCESS_TOKEN_KEY);
-    const replaceUrl = ROUTES.profile.page; // TODO: change to another page
+    // default redirect to profile page
+    const replaceUrl = ROUTES.platform.profile.route;
 
     return !isAuth ? <>{children}</> : <Navigate to={replaceUrl} />;
 }
