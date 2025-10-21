@@ -10,7 +10,8 @@ import type {
     ProfileResponse,
     RefreshResponse,
     RegisterRequest,
-    RegisterResponse
+    RegisterResponse,
+    GoogleLoginRequest
 } from "../model/types/auth";
 import {profileActions} from "../../profile/slice/profileSlice.ts";
 import {ApiTags} from "../../../shared/config/api/apiTags.ts";
@@ -24,7 +25,8 @@ export const authApi = baseApi.injectEndpoints({
                 method: 'POST',
                 body
             }),
-            async onQueryStarted(_, { queryFulfilled, extra, dispatch}) {
+            // Dispatch is not more needed.
+            async onQueryStarted(_, { queryFulfilled, extra}) {
                 try {
                     // dispatch(baseApi.util.resetApiState());
                     const result = await queryFulfilled;
@@ -35,20 +37,21 @@ export const authApi = baseApi.injectEndpoints({
                     typedExtra.navigate(returnPage);
                 } catch (error) {
                     if(error && typeof error === 'object' && 'error' in error) {
-                        const errObj = error as {error: {data: {message: string}}};
+                        // const errObj = error as {error: {data: {message: string}}};
                         // toast.error(errObj.error.data.message);
                     }
                     console.error(error);
                 }
             }
         }),
+        // Dispatch is not more needed.
         register: build.mutation<RegisterResponse, RegisterRequest>({
             query: (body) => ({
                 url: authApiUrls.register,
                 method: 'POST',
                 body
             }),
-            async onQueryStarted(_, { queryFulfilled, extra, dispatch}) {
+            async onQueryStarted(_, { queryFulfilled, extra}) {
                 try {
                     // dispatch(baseApi.util.resetApiState());
                     const result = await queryFulfilled;
@@ -57,7 +60,7 @@ export const authApi = baseApi.injectEndpoints({
                     typedExtra.navigate(ROUTES.platform.profile.route);
                 } catch (error) {
                     if(error && typeof error === 'object' && 'error' in error) {
-                        const errObj = error as {error: {data: {message: string}}};
+                        // const errObj = error as {error: {data: {message: string}}};
                         // toast.error(errObj.error.data.message);
                     }
                     console.error(error);
@@ -88,8 +91,26 @@ export const authApi = baseApi.injectEndpoints({
                     console.error('Error was occurred while fetching profile: ', error);
                 }
             }
-        })
+        }),
 
+        googleLogin: build.mutation<LoginResponse, GoogleLoginRequest>({
+            query: (body) => ({
+                url: authApiUrls.googleLogin,
+                method: 'POST',
+                body: body
+            }),
+            async onQueryStarted(_, { queryFulfilled, extra}) {
+                try {
+                    const {data} = await queryFulfilled;
+                    setToLS(LS_ACCESS_TOKEN_KEY, data.accessToken);
+                    const typedExtra = extra as ExtraArgument;
+                    typedExtra.navigate(ROUTES.platform.profile.route);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+
+        }),
         // TODO: add google login, profile, logout, refresh endpoints
     })
 });
@@ -98,4 +119,5 @@ export const {
     useLoginMutation,
     useRegisterMutation,
     useProfileQuery,
+    useGoogleLoginMutation,
 } = authApi;

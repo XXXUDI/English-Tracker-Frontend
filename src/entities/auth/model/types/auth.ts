@@ -48,6 +48,13 @@ export interface Profile {
     updatedAt: Date,
 }
 
+// DTO for Backend
+export interface GoogleLoginRequest {
+    token: string;
+}
+
+
+
 export type LoginRequest = LoginFormValues;
 export type LoginResponse = AuthResponse;
 
